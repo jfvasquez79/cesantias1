@@ -1,0 +1,85 @@
+<div class="container">
+  <h2 class="text-center my-4 text--primary" >Factores</h2>
+  <form class="container" [formGroup]="formFactory" #formDirective="ngForm"  (ngSubmit)="submit(formFactory ,formDirective)">
+    <div class="row">
+      <mat-form-field class="col-4">
+        <mat-label>Concepto</mat-label>
+        <mat-select formControlName="concepto" >
+          <mat-option>Escoge una opcion</mat-option>
+          <mat-option *ngFor="let concep of allConcept"  value="{{ concep.concepName }}">{{ concep.concepName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-4">
+        <input
+          matInput
+          type="number"
+          formControlName="valor"
+          placeholder="Valor"
+        />
+        <mat-error
+          *ngIf="this.formFactory.get('valor')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formFactory.get('valor')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-4">
+        <input
+          matInput
+          type="number"
+          formControlName="factor"
+          placeholder="Factor"
+        />
+        <mat-error
+          *ngIf="this.formFactory.get('factor')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formFactory.get('factor')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button mat-raised-button color="primary" aria-label="Guardar">
+        <mat-icon>check_circle_outline</mat-icon> Guardar
+      </button>
+    </div>
+  </form>
+</div>
+<br>
+
+<div class="container">
+  <table class="table table-striped table-hover table-bordered table-content">
+    <thead>
+      <tr class="center-align">
+        <th>Concepto</th>
+        <th>Valor</th>
+        <th>Factor</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let factory of Factorylist" class="center-align">
+        <td>{{ factory.concepto }}</td>
+        <td>{{ factory.valor  |  currency:"COP" }}</td>
+        <td>{{ factory.factor  |  currency:"COP"}}</td>
+
+        <td>
+          <a mat-raised-button color="primary" ><mat-icon>edit</mat-icon></a>
+        </td>
+      </tr>
+      <tr>
+        <td *ngIf="Factorylist.length == 0" colspan="6">No se encuentra registros</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

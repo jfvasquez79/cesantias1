@@ -1,0 +1,99 @@
+<div class="container">
+  <h2 class="text-center my-4 text--primary" >Informacion General</h2>
+  <form class="container" [formGroup]="formInformation" (ngSubmit)="submit()">
+    <div class="row">
+      <mat-form-field class="col-6">
+        <mat-label>Entidades</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="1">Entidad 1</mat-option>
+          <mat-option value="2">Entidad 2</mat-option>
+          <mat-option value="3">Entidad 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Municipio</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="1">Municipio 1</mat-option>
+          <mat-option value="2">Municipio 2</mat-option>
+          <mat-option value="3">Municipio 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="direccion" placeholder="Direccion" />
+        <mat-error
+          *ngIf="this.formInformation.get('direccion')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="barrio" placeholder="Barrio" />
+        <mat-error
+          *ngIf="this.formInformation.get('barrio')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          formControlName="telefono"
+          type="number"
+          placeholder="Telefono"
+        />
+        <mat-error
+          *ngIf="this.formInformation.get('telefono')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formInformation.get('telefono')?.errors?.['maxLength']"
+        >
+          Debe tener como maximo 10 caracteres
+        </mat-error>
+        <mat-error
+          *ngIf="this.formInformation.get('telefono')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="ingreso"
+          placeholder="Ingreso"
+        />
+        <mat-error
+          *ngIf="this.formInformation.get('ingreso')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="number"
+          formControlName="dias"
+          placeholder="Dias no trabajados"
+        />
+        <mat-error
+          *ngIf="this.formInformation.get('dias')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formInformation.get('dias')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button mat-raised-button color="primary" aria-label="Guardar">
+        <mat-icon>check_circle_outline</mat-icon> Guardar
+      </button>
+    </div>
+  </form>
+</div>
