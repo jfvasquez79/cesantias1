@@ -16,6 +16,8 @@ export class PrecedentsComponent implements OnInit {
   allTipo!: Tipo[];
   formPrecedents: FormGroup;
   color: ThemePalette = 'primary';
+  total!: number;
+
     @Input() Precedentlist: Precedents[] = [
     {
       fecha:"2023-07-22",
@@ -47,6 +49,7 @@ export class PrecedentsComponent implements OnInit {
   ngOnInit(): void {
     this.allModo = this.precedentsservice.getModo();
     this.allTipo = this.precedentsservice.getTipo();
+    this.total = this.Precedentlist.reduce((sum, value) => (typeof value.valor == "number" ? sum + value.valor : sum), 0);
 
   }
    submit(fData: any,formDirective: FormGroupDirective): void {
@@ -58,6 +61,7 @@ export class PrecedentsComponent implements OnInit {
       formDirective.resetForm();
       this.formPrecedents.reset();
     }
+
   }
 
   addPrecedents(precedents: Precedents) {

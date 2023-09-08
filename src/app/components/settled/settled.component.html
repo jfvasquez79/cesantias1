@@ -1,1 +1,181 @@
-<p>settled works!</p>
+<div class="container">
+  <h2 class="text-center my-4 text--primary" >Radicado</h2>
+  <form class="container" [formGroup]="formSettled" #formDirective="ngForm" (ngSubmit)="submit(formSettled ,formDirective)"   >
+    <div class="row">
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="fecha"
+          placeholder="Fecha"
+        />
+        <mat-error
+          *ngIf="this.formSettled.get('fecha')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+        <mat-form-field class="col-6">
+          <input
+            matInput
+            type="number"
+            formControlName="numero"
+            placeholder="N°"
+          />
+          <mat-error
+            *ngIf="this.formSettled.get('numero')?.errors?.['required']"
+          >
+            El campo es obligatorio
+          </mat-error>
+          <mat-error
+            *ngIf="this.formSettled.get('numero')?.errors?.['pattern']"
+          >
+            El campo es numerico
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-6">
+          <input
+            matInput
+            currencyMask
+            type="number"
+            formControlName="valor"
+            placeholder="Valor"
+          />
+          <mat-error
+            *ngIf="this.formSettled.get('valor')?.errors?.['required']"
+          >
+            El campo es obligatorio
+          </mat-error>
+          <mat-error
+            *ngIf="this.formSettled.get('valor')?.errors?.['pattern']"
+          >
+            El campo es numerico
+          </mat-error>
+        </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="modo"  >
+          <mat-option>Escoge una opcion</mat-option>
+          <mat-option *ngFor="let modo of allModo"  value="{{ modo.modoName }}">{{ modo.modoName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Modo</mat-label>
+        <mat-select  formControlName="tipo" >
+          <mat-option *ngFor="let tipo of allTipo"  value="{{ tipo.tipoName }}">{{ tipo.tipoName }}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="corte"
+          placeholder="Corte a"
+        />
+        <mat-error
+          *ngIf="this.formSettled.get('corte')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Institución</mat-label>
+        <mat-select  formControlName="institucion" >
+          <mat-option *ngFor="let institucion of allInstitucion"  value="{{ institucion.institucionName }}">{{ institucion.institucionName }}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Clase</mat-label>
+        <mat-select  formControlName="clase" >
+          <mat-option *ngFor="let clase of allClase"  value="{{ clase.claseName }}">{{ clase.claseName }}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="otro" placeholder="Otro" />
+        <mat-error
+          *ngIf="this.formSettled.get('otro')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="funcionario" placeholder="Funcionario" />
+        <mat-error
+          *ngIf="this.formSettled.get('funcionario')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="cargo" placeholder="Cargo" />
+        <mat-error
+          *ngIf="this.formSettled.get('cargo')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input matInput formControlName="entidad" placeholder="Entidad" />
+        <mat-error
+          *ngIf="this.formSettled.get('entidad')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button mat-raised-button color="primary" aria-label="Guardar">
+        <mat-icon>check_circle_outline</mat-icon> Guardar
+      </button>
+    </div>
+  </form>
+</div>
+<br>
+<div class="container">
+  <table class="table table-striped table-hover table-bordered table-content">
+    <thead>
+      <tr class="center-align">
+        <th>Fecha</th>
+        <th>#</th>
+        <th>Valor</th>
+        <th>Tipo</th>
+        <th>Modo</th>
+        <th>Corte</th>
+        <th>Institución</th>
+        <th>Clase</th>
+        <th>Otro</th>
+        <th>Funcionario</th>
+        <th>Cargo</th>
+        <th>Entidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let settled of Settledlist" class="center-align">
+        <td>{{ settled.fecha | date: 'dd/MM/yyyy'}}</td>
+        <td>{{ settled.numero }}</td>
+        <td>{{ settled.valor |  currency:"COP" }}</td>
+        <td>{{ settled.tipo }}</td>
+        <td>{{ settled.modo  }}</td>
+        <td>{{ settled.corte | date: 'dd/MM/yyyy'  }}</td>
+        <td>{{ settled.institucion  }}</td>
+        <td>{{ settled.clase  }}</td>
+        <td>{{ settled.otro  }}</td>
+        <td>{{ settled.funcionario  }}</td>
+        <td>{{ settled.cargo  }}</td>
+        <td>{{ settled.entidad  }}</td>
+
+        <td>
+          <a mat-raised-button color="primary" ><mat-icon>edit</mat-icon></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center" *ngIf="Settledlist.length == 0" colspan="13">No se encuentra registros</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

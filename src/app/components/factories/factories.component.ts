@@ -18,6 +18,7 @@ import { FactoryService } from 'src/app/service/factory.service';
 export class FactoriesComponent implements OnInit {
   allConcept!: Concepto[];
   formFactory: FormGroup;
+  total!: number;
 
   @Input() Factorylist: Factory[] = [
     {
@@ -53,6 +54,7 @@ export class FactoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.allConcept = this.factoryService.getConept();
+    this.total = this.Factorylist.reduce((sum, value) => (typeof value.valor == "number" ? sum + value.valor : sum), 0);
   }
 
   submit(fData: any,formDirective: FormGroupDirective): void {
@@ -64,6 +66,7 @@ export class FactoriesComponent implements OnInit {
       this.formFactory.reset();
     }
   }
+
   addFactory(factory: Factory) {
     this.Factorylist.push(factory);
   }

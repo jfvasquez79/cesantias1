@@ -57,7 +57,7 @@
 <br>
 
 <div class="container">
-  <table class="table table-striped table-hover table-bordered table-content">
+  <table class="table  table-hover table-bordered table-content">
     <thead>
       <tr class="center-align">
         <th>Concepto</th>
@@ -80,6 +80,12 @@
         <td *ngIf="Factorylist.length == 0" colspan="6">No se encuentra registros</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr >
+        <td  colspan="2" >Salario Base</td>
+        <td colspan="2">{{total | currency:"COP" }}</td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 

@@ -79,7 +79,7 @@
 </div>
 <br>
 <div class="container">
-  <table class="table table-striped table-hover table-bordered table-content">
+  <table class="table  table-hover table-bordered table-content">
     <thead>
       <tr class="center-align">
         <th>Fecha</th>
@@ -87,6 +87,8 @@
         <th>Valor</th>
         <th>Tipo</th>
         <th>Modo</th>
+        <th >Acciones</th>
+
       </tr>
     </thead>
     <tbody>
@@ -105,6 +107,12 @@
         <td *ngIf="Precedentlist.length == 0" colspan="6">No se encuentra registros</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr >
+        <td  colspan="2" >Total</td>
+        <td colspan="4">{{total | currency:"COP" }}</td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
