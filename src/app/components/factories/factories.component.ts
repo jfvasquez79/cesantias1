@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Concepto } from 'src/app/models/concepto';
 import { Factory } from 'src/app/models/model';
+import { ApiService } from 'src/app/service/api/api.service';
 import { FactoryService } from 'src/app/service/factory.service';
 
 @Component({
@@ -16,7 +17,7 @@ import { FactoryService } from 'src/app/service/factory.service';
   styleUrls: ['./factories.component.scss'],
 })
 export class FactoriesComponent implements OnInit {
-  allConcept!: Concepto[];
+  allConcept: Concepto[]=[];
   formFactory: FormGroup;
   total!: number;
 
@@ -38,7 +39,8 @@ export class FactoriesComponent implements OnInit {
     },
   ];
 
-  constructor(private factoryService: FactoryService, private fb: FormBuilder) {
+  constructor(private factoryService: FactoryService, private fb: FormBuilder,private api:ApiService
+    ) {
     this.formFactory = fb.group({
       concepto: new FormControl('', [Validators.required]),
       valor: new FormControl(null, [
@@ -53,7 +55,13 @@ export class FactoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.allConcept = this.factoryService.getConept();
+    this.api.getConcepto().subscribe(
+      (response: any) => {
+        console.log(response)
+        this.allConcept = response;
+      })
+    console.log(this.allConcept);
+
     this.total = this.Factorylist.reduce((sum, value) => (typeof value.valor == "number" ? sum + value.valor : sum), 0);
   }
 

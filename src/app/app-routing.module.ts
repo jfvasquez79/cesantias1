@@ -17,3 +17,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
+export const componentRouting=[InformationGeneralComponent,FactoriesComponent,PrecedentsComponent,SettledComponent]

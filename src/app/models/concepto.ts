@@ -1,4 +1,4 @@
 export class Concepto {
-  constructor(public concepId:string, public concepName:string) {
+  constructor(public cpt:number, public Concepto:string) {
   }
 }

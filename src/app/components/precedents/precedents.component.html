@@ -54,16 +54,16 @@
           </mat-error>
         </mat-form-field>
       <mat-form-field class="col-6">
-        <mat-label>Tipo</mat-label>
+        <mat-label>Modo</mat-label>
         <mat-select formControlName="modo"  >
           <mat-option>Escoge una opcion</mat-option>
           <mat-option *ngFor="let modo of allModo"  value="{{ modo.modoName }}">{{ modo.modoName }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="col-6">
-        <mat-label>Modo</mat-label>
+        <mat-label>Tipo</mat-label>
         <mat-select  formControlName="tipo" >
-          <mat-option *ngFor="let tipo of allTipo"  value="{{ tipo.tipoName }}">{{ tipo.tipoName }}</mat-option>
+          <mat-option *ngFor="let tipo of allTipo"  value="{{ tipo.tip_cesa }}">{{ tipo.Descripcion }}</mat-option>
 
         </mat-select>
       </mat-form-field>
@@ -76,9 +76,11 @@
       </button>
     </div>
   </form>
-  
+
 </div>
 <br>
+{{Precedentlist | json}}
+
 <div class="container">
   <table class="table  table-hover table-bordered table-content">
     <thead>
@@ -93,12 +95,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let precedent of Precedentlist" class="center-align">
+      <tr *ngFor="let precedent of Precedentlist; " class="center-align">
         <td>{{ precedent.fecha | date: 'dd/MM/yyyy'}}</td>
         <td>{{ precedent.numero }}</td>
         <td>{{ precedent.valor |  currency:"COP" }}</td>
-        <td>{{ precedent.tipo }}</td>
-        <td>{{ precedent.modo  }}</td>
+        <td>{{precedent.tipos!.Descripcion}}</td>
+<!--         //<td *ngFor="let tipos of (precedent.tipos keyvalue)" > {{tipos | json}}</td>
+ -->        <td>{{ precedent.modo  }}</td>
 
         <td>
           <a mat-raised-button color="primary" ><mat-icon>edit</mat-icon></a>

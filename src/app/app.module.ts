@@ -2,7 +2,7 @@ import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
-
+//ESTILOS
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FormsModule} from '@angular/forms';
@@ -12,15 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-import { AppRoutingModule } from './app-routing.module';
-
-
+//ROUTES
+import { AppRoutingModule ,componentRouting} from './app-routing.module';
+//HTTP
+import {HttpClientModule} from '@angular/common/http'
+//COMPONENTS
 import { AppComponent } from './app.component';
-import { InformationGeneralComponent } from './components/information-general/information-general.component';
-import { FactoriesComponent } from './components/factories/factories.component';
-import { PrecedentsComponent } from './components/precedents/precedents.component';
-import { SettledComponent } from './components/settled/settled.component';
 import { BudgetAvailabilityComponent } from './components/budget-availability/budget-availability.component';
 import { ResolutionComponent } from './components/resolution/resolution.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -30,10 +27,7 @@ registerLocaleData(es);
 @NgModule({
   declarations: [
     AppComponent,
-    InformationGeneralComponent,
-    FactoriesComponent,
-    PrecedentsComponent,
-    SettledComponent,
+    componentRouting,
     BudgetAvailabilityComponent,
     ResolutionComponent,
     SidebarComponent,
@@ -42,7 +36,7 @@ registerLocaleData(es);
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    HttpClientModule,
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,

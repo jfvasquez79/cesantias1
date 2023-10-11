@@ -1,5 +1,5 @@
 export class Institucion {
 
-  constructor(public institucionId:string, public institucionName:string) {
+  constructor(public ins_nit:string, public institucion:string) {
   }
 }

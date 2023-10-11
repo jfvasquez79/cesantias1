@@ -4,18 +4,14 @@
     <div class="row">
       <mat-form-field class="col-6">
         <mat-label>Entidades</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option value="1">Entidad 1</mat-option>
-          <mat-option value="2">Entidad 2</mat-option>
-          <mat-option value="3">Entidad 3</mat-option>
+        <mat-select  formControlName="tipo" >
+          <mat-option *ngFor="let entidad of allEntidad"  value="{{ entidad.Ent }}">{{ entidad.Entidad }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Municipio</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option value="1">Municipio 1</mat-option>
-          <mat-option value="2">Municipio 2</mat-option>
-          <mat-option value="3">Municipio 3</mat-option>
+        <mat-select  formControlName="tipo" >
+          <mat-option *ngFor="let municipio of allMunicipio"  value="{{ municipio.cod_mpio }}">{{ municipio.nom_mpio }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="col-6">

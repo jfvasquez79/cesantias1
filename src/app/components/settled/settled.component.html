@@ -54,15 +54,14 @@
         </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Tipo</mat-label>
-        <mat-select formControlName="modo"  >
-          <mat-option>Escoge una opcion</mat-option>
-          <mat-option *ngFor="let modo of allModo"  value="{{ modo.modoName }}">{{ modo.modoName }}</mat-option>
-        </mat-select>
+        <mat-select  formControlName="tipo" >
+          <mat-option *ngFor="let tipo of allTipo"  value="{{ tipo.tip_cesa }}">{{ tipo.Descripcion }}</mat-option>
+       </mat-select>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Modo</mat-label>
         <mat-select  formControlName="tipo" >
-          <mat-option *ngFor="let tipo of allTipo"  value="{{ tipo.tipoName }}">{{ tipo.tipoName }}</mat-option>
+          <mat-option *ngFor="let modo of allModo"  value="{{ modo.modoName }}">{{ modo.modoName }}</mat-option>
 
         </mat-select>
       </mat-form-field>
@@ -82,7 +81,7 @@
       <mat-form-field class="col-6">
         <mat-label>Institución</mat-label>
         <mat-select  formControlName="institucion" >
-          <mat-option *ngFor="let institucion of allInstitucion"  value="{{ institucion.institucionName }}">{{ institucion.institucionName }}</mat-option>
+          <mat-option *ngFor="let institucion of allInstitucion"  value="{{ institucion.ins_nit }}">{{ institucion.institucion }}</mat-option>
 
         </mat-select>
       </mat-form-field>

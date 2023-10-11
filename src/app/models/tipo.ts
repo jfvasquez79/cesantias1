@@ -1,4 +1,4 @@
 export class Tipo {
-  constructor(public tipoId:string, public tipoName:string) {
-  }
+  public tip_cesa:string|any;
+  public Descripcion:string |any |undefined
 }
