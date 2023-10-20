@@ -1,1 +1,122 @@
-<p>resolution works!</p>
+<div class="container">
+  <h2 class="text-center my-4 text--primary" >Disponibilidad Presupuestal</h2>
+  <form class="container" [formGroup]="formResolution" #formDirective="ngForm" >
+    <h4 class="text-center my-4 text--primary" >Radicado de la Solicitud</h4>
+    <div class="row">
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="fecha_r"
+          placeholder="Fecha de radicado"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('fecha_r')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="number"
+          formControlName="numero_r"
+          placeholder="Numero de radicado"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('numero_r')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formResolution.get('numero_r')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+
+
+    </div>
+    <h4 class="text-center my-4 text--primary" >Disponibilidad Presupuestal</h4>
+    <div class="row">
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="fecha_d"
+          placeholder="Fecha de disponibilidad"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('fecha_d')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="number"
+          formControlName="numero_d"
+          placeholder="Numero de disponibilidad"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('numero_d')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formResolution.get('numero_d')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+
+
+    </div>
+    <h4 class="text-center my-4 text--primary" >Resolucion</h4>
+    <div class="row">
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="date"
+          formControlName="fecha_rs"
+          placeholder="Fecha de resolucion"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('fecha_rs')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          matInput
+          type="number"
+          formControlName="numero_rs"
+          placeholder="Numero de resolucion"
+        />
+        <mat-error
+          *ngIf="this.formResolution.get('numero_rs')?.errors?.['required']"
+        >
+          El campo es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="this.formResolution.get('numero_rs')?.errors?.['pattern']"
+        >
+          El campo es numerico
+        </mat-error>
+      </mat-form-field>
+
+
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button mat-raised-button color="primary" aria-label="Guardar">
+        <mat-icon>check_circle_outline</mat-icon> Guardar
+      </button>
+    </div>
+  </form>
+</div>
+<br>
+
+
+

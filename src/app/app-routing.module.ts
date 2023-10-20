@@ -4,11 +4,15 @@ import { InformationGeneralComponent } from './components/information-general/in
 import { FactoriesComponent } from './components/factories/factories.component';
 import { PrecedentsComponent } from './components/precedents/precedents.component';
 import { SettledComponent } from './components/settled/settled.component';
+import { BudgetAvailabilityComponent } from './components/budget-availability/budget-availability.component';
+import { ResolutionComponent } from './components/resolution/resolution.component';
 const routes: Routes = [
   { path: 'informGeneral', component: InformationGeneralComponent },
   { path: 'factores', component: FactoriesComponent },
   { path: 'precedentes', component: PrecedentsComponent },
   { path: 'radicado', component: SettledComponent },
+  { path: 'disponibilidad-presupuestal', component: BudgetAvailabilityComponent },
+  { path: 'resolucion', component: ResolutionComponent },
 ];
 
 @NgModule({
@@ -17,4 +21,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const componentRouting=[InformationGeneralComponent,FactoriesComponent,PrecedentsComponent,SettledComponent]
+export const componentRouting=[InformationGeneralComponent,FactoriesComponent,PrecedentsComponent,SettledComponent,BudgetAvailabilityComponent,ResolutionComponent]
